@@ -10,6 +10,9 @@
 
     --vt-c-indigo: #2c3e50;
 
+    --vt-c-vue-blue: #34495e;
+    --vt-c-vue-mint: #41b883;
+
     --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
     --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
     --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
@@ -60,7 +63,6 @@
 }
 
 body {
-    min-height: 100vh;
     color: var(--color-text);
     background: var(--color-background);
     transition: color 0.5s, background-color 0.5s;

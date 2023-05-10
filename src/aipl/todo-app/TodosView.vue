@@ -1,25 +1,30 @@
-<script lang='ts'>
+<script setup lang="ts">
 import TodosList from './components/TodosList.vue'
 import AddTodoForm from './components/AddTodoForm.vue'
-import { useTodosStore } from './stores/todo-store/todoStore';
-
-const todosStore = useTodosStore()
-
-export default {
-    name: 'TodosView',
-    setup() {
-        return {
-            todos: todosStore.todos 
-        }
-    }
-}
+import UpdateTodoForm from './components/UpdateTodoForm.vue'
+import RemoveTodoForm from './components/RemoveTodoForm.vue'
 </script>
 
 <template>
-<main>
-    <AddTodoForm />
-    <TodosList :todos="todos" />
-</main>
+    <div class='todos-view'>
+        <RemoveTodoForm />
+        <UpdateTodoForm />
+        <AddTodoForm />
+            <TodosList />
+    </div>
 </template>
 
+<style scoped>
+.todos-view {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
 
+@media (max-width: 1024px) {
+    .todos-view {
+        flex-direction: column;
+    }
+}
+</style>
