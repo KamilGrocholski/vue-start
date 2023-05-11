@@ -26,17 +26,17 @@ function handleSubmit() {
 <template>
     <Modal v-if="isUpdateModalOpen">
         <form @submit.prevent="handleSubmit">
-            <div class='inputs-wrapper'>
-            <input v-model="todoToUpdate.content" type="text" />
-            <select v-model="todoToUpdate.status">
-                <option v-for="status in TODO_STATUSES" :key="status">
-                    {{ status }}
-                </option>
-            </select>
+            <div class="inputs-wrapper">
+                <input v-model="todoToUpdate.content" type="text" />
+                <select v-model="todoToUpdate.status">
+                    <option v-for="status in TODO_STATUSES" :key="status">
+                        {{ status }}
+                    </option>
+                </select>
             </div>
-            <div class='actions-wrapper'>
-            <Button size='lg' type="submit">Update</Button>
-            <Button size='lg' @click="todosStore.closeUpdateModal">Cancel</Button>
+            <div class="actions-wrapper">
+                <Button size="lg" type="submit">Update</Button>
+                <Button size="lg" @click="todosStore.closeUpdateModal">Cancel</Button>
             </div>
         </form>
     </Modal>

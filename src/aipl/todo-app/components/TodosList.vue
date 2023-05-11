@@ -11,7 +11,7 @@ const { todos } = storeToRefs(todosStore)
 <template>
     <ul class="todos-list">
         <li v-for="todo in todos" :key="todo.id" class="todo-item">
-            <div>
+            <div className="todo-item__data">
                 <p>{{ todo.content }}</p>
                 <p>{{ todo.status }}</p>
             </div>
@@ -26,16 +26,22 @@ const { todos } = storeToRefs(todosStore)
 </template>
 
 <style scoped>
+.todo-item__status-inprogress {
+    color: green;
+}
+
 .todos-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 2rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .todo-item {
     display: flex;
     flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
     gap: 1rem;
     background-color: var(--vt-c-vue-blue);
     padding: 0.5rem;
@@ -46,7 +52,20 @@ const { todos } = storeToRefs(todosStore)
     transition-delay: 50ms;
     transition-duration: 100ms;
     overflow-wrap: break-word;
-    inline-size: 20rem;
+    width: 100%;
+}
+
+@media (max-width: 720px) {
+    .todos-list {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.todo-item__data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .todo-item__actions {

@@ -1,22 +1,33 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
+import { EXTERNAL_LINKS } from './const/external-links'
 </script>
 
 <template>
-    <div class=''>
-    <header>
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <div class="">
+        <header>
+            <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="80" height="80" />
 
-        <div class="wrapper">
-            <nav>
-                <RouterLink to="/">Home</RouterLink>
-            </nav>
-        </div>
-    </header>
+            <div class="wrapper">
+                <nav>
+                    <RouterLink to="/">Home</RouterLink>
+                    <RouterLink to="/todos">Todos</RouterLink>
+                    <RouterLink to="/cart">Cart</RouterLink>
+                </nav>
+            </div>
+        </header>
 
-    <main class='container'>
-    <RouterView />
-    </main>
+        <main class="container">
+            <RouterView />
+        </main>
+        <footer>
+            <div>
+                <a :href="EXTERNAL_LINKS.github.repo">REPO</a>
+                <span>by</span>
+                <a :href="EXTERNAL_LINKS.github.profile">Mikalsqwe</a>
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -31,27 +42,27 @@ main {
 }
 
 header {
+    display: flex;
+    flex-direction: row;
     background-color: var(--vt-c-vue-blue);
     width: 100%;
     z-index: 45;
     line-height: 1.5;
     position: sticky;
-    top:0;
-    left:0;
-    right:0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 5rem;
 }
 
-.logo {
-    display: block;
-    margin: 0 auto 2rem;
-}
-
 nav {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     font-size: 12px;
     text-align: center;
     margin-top: 2rem;
+    margin-left: 2rem;
 }
 
 nav a.router-link-exact-active {
@@ -70,6 +81,16 @@ nav a {
 
 nav a:first-of-type {
     border: 0;
+}
+
+footer {
+    background-color: var(--vt-c-vue-blue);
+}
+
+footer > div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
 }
 
 @media (min-width: 1024px) {

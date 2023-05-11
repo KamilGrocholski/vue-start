@@ -25,15 +25,15 @@ function handleSubmit() {
 
 <template>
     <form @submit.prevent="handleSubmit">
-        <div class='inputs-wrapper'>
-        <input v-model="content" type="text" />
-        <select v-model="status">
-            <option v-for="status in TODO_STATUSES" :key="status">
-                {{ status }}
-            </option>
-        </select>
+        <div class="inputs-wrapper">
+            <input v-model="content" type="text" placeholder="Todo content" />
+            <select v-model="status">
+                <option v-for="status in TODO_STATUSES" :key="status">
+                    {{ status }}
+                </option>
+            </select>
         </div>
-        <Button class='w-full' type="submit" size='lg'>Add</Button>
+        <Button class="w-full" type="submit" size="lg">Add</Button>
     </form>
 </template>
 

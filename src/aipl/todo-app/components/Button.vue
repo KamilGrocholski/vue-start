@@ -12,7 +12,7 @@ export default defineComponent({
         variant: { type: String as PropType<ButtonVariant>, default: 'primary' },
         size: { type: String as PropType<ButtonSize>, default: 'md' },
         type: { type: String as PropType<ButtonHTMLAttributes['type']>, default: 'button' },
-        class: {type: String, default: ''}
+        class: { type: String, default: '' }
     },
     setup(props) {
         const computedClasses = computed(() => [

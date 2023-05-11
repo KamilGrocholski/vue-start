@@ -19,12 +19,12 @@ function handleSubmit() {
 </script>
 
 <template>
-    <Modal v-if="isRemoveModalOpen"> 
-        <form @submit.prevent="handleSubmit" class='form-wrapper'>
+    <Modal v-if="isRemoveModalOpen">
+        <form @submit.prevent="handleSubmit" class="form-wrapper">
             <p>Do you want to remove this todo?</p>
             <div>
-            <Button type="submit" size='lg'>Yes</Button>
-            <Button size='lg' @click="todosStore.closeRemoveModal">No</Button>
+                <Button variant="danger" type="submit" size="lg">Yes</Button>
+                <Button size="lg" @click="todosStore.closeRemoveModal">No</Button>
             </div>
         </form>
     </Modal>
@@ -34,9 +34,14 @@ function handleSubmit() {
 .form-wrapper {
     text-align: center;
 }
-.form-wrapper>div {
+.form-wrapper > div {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-wrapper > p {
+    font-size: 1.2rem;
 }
 </style>
