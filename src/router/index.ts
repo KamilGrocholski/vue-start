@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import CartView from '../aipl/commander-app/CartView.vue'
+import StoreView from '../aipl/commander-app/StoreView.vue'
 import TodosView from '../aipl/todo-app/TodosView.vue'
 import HomeView from '../views/HomeView.vue'
 
@@ -18,9 +18,9 @@ const router = createRouter({
             component: TodosView
         },
         {
-            path: '/cart',
-            name: 'cart',
-            component: CartView
+            path: '/store',
+            name: 'store',
+            component: StoreView
         }
     ]
 })

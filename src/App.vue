@@ -13,7 +13,7 @@ import { EXTERNAL_LINKS } from './const/external-links'
                 <nav>
                     <RouterLink to="/">Home</RouterLink>
                     <RouterLink to="/todos">Todos</RouterLink>
-                    <RouterLink to="/cart">Cart</RouterLink>
+                    <RouterLink to="/store">Store</RouterLink>
                 </nav>
             </div>
         </header>

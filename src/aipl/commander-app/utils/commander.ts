@@ -1,129 +1,129 @@
 export abstract class Command<T> {
-  abstract execute(state: T): T;
-  abstract undo(state: T): T;
+    abstract execute(state: T): T
+    abstract undo(state: T): T
 }
 
 export class Commander<T> {
-  state: T;
-  private _history: Stack<Command<T>>;
+    state: T
+    private _history: Stack<Command<T>>
 
-  constructor(initialState: T) {
-    this.state = initialState;
-    this._history = new Stack();
-  }
-
-  execute(command: Command<T>): void {
-    this.state = command.execute(this.state);
-    this._history.push(command);
-  }
-
-  undo(): void {
-    const command = this._history.pop();
-
-    if (!command) {
-      return;
+    constructor(initialState: T) {
+        this.state = initialState
+        this._history = new Stack()
     }
 
-    this.state = command.undo(this.state);
-  }
+    execute(command: Command<T>): void {
+        this.state = command.execute(this.state)
+        this._history.push(command)
+    }
+
+    undo(): void {
+        const command = this._history.pop()
+
+        if (!command) {
+            return
+        }
+
+        this.state = command.undo(this.state)
+    }
 }
 
 class Stack<T> {
-  private _storage: UniLinkedList<T>;
+    private _storage: UniLinkedList<T>
 
-  constructor() {
-    this._storage = new UniLinkedList();
-  }
+    constructor() {
+        this._storage = new UniLinkedList()
+    }
 
-  push(value: T): void {
-    this._storage.prepend(value);
-  }
+    push(value: T): void {
+        this._storage.prepend(value)
+    }
 
-  pop(): T | undefined {
-    return this._storage.unshift();
-  }
+    pop(): T | undefined {
+        return this._storage.unshift()
+    }
 
-  peek(): T | undefined {
-    return this._storage.head?.value;
-  }
+    peek(): T | undefined {
+        return this._storage.head?.value
+    }
 
-  get size(): number {
-    return this._storage.size;
-  }
+    get size(): number {
+        return this._storage.size
+    }
 }
 
 class UniNode<T> {
-  value: T;
-  next: UniNode<T> | null;
+    value: T
+    next: UniNode<T> | null
 
-  constructor(value: T) {
-    this.value = value;
-    this.next = null;
-  }
+    constructor(value: T) {
+        this.value = value
+        this.next = null
+    }
 
-  static create<V>(value: V): UniNode<V> {
-    return new UniNode(value);
-  }
+    static create<V>(value: V): UniNode<V> {
+        return new UniNode(value)
+    }
 }
 
 class UniLinkedList<T> {
-  head: UniNode<T> | null;
-  tail: UniNode<T> | null;
-  private _size: number;
+    head: UniNode<T> | null
+    tail: UniNode<T> | null
+    private _size: number
 
-  constructor() {
-    this.head = this.tail = null;
-    this._size = 0;
-  }
-
-  append(value: T): void {
-    const newNode = UniNode.create(value);
-    this._size++;
-
-    if (!this.tail) {
-      this.tail = this.head = newNode;
-      return;
+    constructor() {
+        this.head = this.tail = null
+        this._size = 0
     }
 
-    this.tail.next = newNode;
-    this.tail = newNode;
-  }
+    append(value: T): void {
+        const newNode = UniNode.create(value)
+        this._size++
 
-  prepend(value: T): void {
-    const newNode = UniNode.create(value);
-    this._size++;
+        if (!this.tail) {
+            this.tail = this.head = newNode
+            return
+        }
 
-    if (!this.head) {
-      this.head = this.tail = newNode;
-      return;
+        this.tail.next = newNode
+        this.tail = newNode
     }
 
-    newNode.next = this.head;
-    this.head = newNode;
-  }
+    prepend(value: T): void {
+        const newNode = UniNode.create(value)
+        this._size++
 
-  unshift(): T | undefined {
-    if (!this.head) {
-      return undefined;
+        if (!this.head) {
+            this.head = this.tail = newNode
+            return
+        }
+
+        newNode.next = this.head
+        this.head = newNode
     }
 
-    const value = this.head.value;
+    unshift(): T | undefined {
+        if (!this.head) {
+            return undefined
+        }
 
-    this.head = this.head.next;
-    this._size--;
+        const value = this.head.value
 
-    return value;
-  }
+        this.head = this.head.next
+        this._size--
 
-  get size(): number {
-    return this._size;
-  }
-
-  *[Symbol.iterator]() {
-    let node = this.head;
-    while (node) {
-      yield node;
-      node = node.next;
+        return value
     }
-  }
+
+    get size(): number {
+        return this._size
+    }
+
+    *[Symbol.iterator]() {
+        let node = this.head
+        while (node) {
+            yield node
+            node = node.next
+        }
+    }
 }
