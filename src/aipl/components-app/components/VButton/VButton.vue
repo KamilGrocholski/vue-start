@@ -122,7 +122,3 @@ button {
     cursor: wait !important;
 }
 </style>
-
-
-
-

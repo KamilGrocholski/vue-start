@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
 import { EXTERNAL_LINKS } from './const/external-links'
@@ -18,20 +18,19 @@ function closeMenu() {
 <template>
     <div>
         <header>
-            <RouterLink to='/'>
-
-            <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="80" height="80" />
+            <RouterLink to="/">
+                <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="80" height="80" />
             </RouterLink>
-            <button class='menu-btn' @click="openMenu">Menu</button>
-            <div v-if='isMenuOpen' class='overlay' @click="closeMenu">
-            <div class=" menu">
-                <nav>
-                    <RouterLink to="/">Home</RouterLink>
-                    <RouterLink to="/todos">Todos</RouterLink>
-                    <RouterLink to="/store">Store</RouterLink>
-                    <RouterLink to="/components">Components</RouterLink>
-                </nav>
-            </div>
+            <button class="menu-btn" @click="openMenu">Menu</button>
+            <div v-if="isMenuOpen" class="overlay" @click="closeMenu">
+                <div class="menu">
+                    <nav>
+                        <RouterLink to="/">Home</RouterLink>
+                        <RouterLink to="/todos">Todos</RouterLink>
+                        <RouterLink to="/store">Store</RouterLink>
+                        <RouterLink to="/components">Components</RouterLink>
+                    </nav>
+                </div>
             </div>
         </header>
 
@@ -79,7 +78,7 @@ header {
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(1,1,1, 75%);
+    background-color: rgba(1, 1, 1, 75%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,7 +101,7 @@ nav {
     text-align: center;
 }
 
-nav a { 
+nav a {
     font-size: 1.1rem;
     width: 100%;
 }
@@ -145,9 +144,9 @@ footer a {
     color: white;
 }
 
-    footer a:active {
-        color: var(--vt-c-vue-mint);
-    }
+footer a:active {
+    color: var(--vt-c-vue-mint);
+}
 
 @media (min-width: 1024px) {
     header {
