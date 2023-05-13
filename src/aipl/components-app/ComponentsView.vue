@@ -1,7 +1,15 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import VButton from './components/VButton/VButton.vue'
 import VTextInput from './components/VTextInput/VTextInput.vue'
 import VLiveSearch from './components/VLiveSearch/VLiveSearch.vue'
+
+const weirdGlobalInVue = computed(() => {
+    return {
+        console
+    }
+})
 </script>
 
 <template>
@@ -51,9 +59,23 @@ import VLiveSearch from './components/VLiveSearch/VLiveSearch.vue'
             <article>
                 <h2>Primary</h2>
                 <div>
-                    <VLiveSearch :extractKey="(item) => item.id"
-                    :onSearch="(query) => console.log(query)" :onEnter="(item) => console.log(item)"
-                                                              :fetchItems="(query) => [{id: 1, name: 'ok'}]"/>
+                    <VLiveSearch
+                        :extractKey="(item) => item.id"
+                        :onSearch="(query) => weirdGlobalInVue.console.log(query)"
+                        :onEnter="(item) => weirdGlobalInVue.console.log(item)"
+                        :fetchItems="
+                            (query) =>
+                                [
+                                    { id: 1, name: 'ok' },
+                                    { id: 2, name: 'nie' },
+                                    { id: 3, name: 'tak' }
+                                ].filter((item) => item.name.startsWith(query))
+                        "
+                    >
+                        <template #item="{ name }">
+                            <div>{{ name }}</div>
+                        </template>
+                    </VLiveSearch>
                 </div>
             </article>
         </section>

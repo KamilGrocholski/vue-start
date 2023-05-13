@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+    inheritAttrs: false
+}
+</script>
+
 <script setup lang="ts">
 import { computed, type InputHTMLAttributes, type PropType } from 'vue'
 
@@ -50,7 +56,7 @@ const computedAttrs = computed(() => {
 </script>
 
 <template>
-    <input v-bind="computedAttrs" :class="computedClass" />
+    <input v-bind="$attrs" :class="computedClass" />
 </template>
 
 <style scoped>
