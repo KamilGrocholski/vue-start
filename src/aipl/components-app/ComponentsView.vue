@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import VButton from './components/VButton/VButton.vue'
 import VTextInput from './components/VTextInput/VTextInput.vue'
 import VLiveSearch from './components/VLiveSearch/VLiveSearch.vue'
+import VModal from './components/VModal/VModal.vue'
+
+const isModalOpen = ref<boolean>(false)
 
 const weirdGlobalInVue = computed(() => {
     return {
@@ -57,7 +60,6 @@ const weirdGlobalInVue = computed(() => {
         <section>
             <h1>VLiveSearch</h1>
             <article>
-                <h2>Primary</h2>
                 <div>
                     <VLiveSearch
                         :extractKey="(item) => item.id"
@@ -77,6 +79,30 @@ const weirdGlobalInVue = computed(() => {
                         </template>
                     </VLiveSearch>
                 </div>
+            </article>
+        </section>
+
+        <section>
+            <h1>Modal</h1>
+            <article>
+                <VModal
+                    :isOpen="isModalOpen"
+                    :close="
+                        () => {
+                            isModalOpen = false
+                        }
+                    "
+                >
+                    <div style="height: 300px; width: 300px; text-align: center">Modal content</div>
+                </VModal>
+                <VButton
+                    @click="
+                        () => {
+                            isModalOpen = true
+                        }
+                    "
+                    >Modal</VButton
+                >
             </article>
         </section>
     </div>
