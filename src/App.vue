@@ -29,6 +29,7 @@ function closeMenu() {
                         <RouterLink to="/todos">Todos</RouterLink>
                         <RouterLink to="/store">Store</RouterLink>
                         <RouterLink to="/components">Components</RouterLink>
+                        <RouterLink to="/jokes">Jokes</RouterLink>
                     </nav>
                 </div>
             </div>

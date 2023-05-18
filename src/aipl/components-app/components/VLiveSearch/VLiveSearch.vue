@@ -102,10 +102,10 @@ function handleFocus() {
     <div>
         <div>
             <VTextInput
-                :model="query"
-                :keydown="handleKeydown"
-                :blur="handleBlur"
-                :focus="handleFocus"
+                v-model="query"
+                @keydown="handleKeydown"
+                @blur="handleBlur"
+                @focus="handleFocus"
                 placeholder="Type smth..."
             />
             <VButton @click="handleSearch">Search</VButton>

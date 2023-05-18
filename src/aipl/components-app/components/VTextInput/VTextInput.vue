@@ -46,13 +46,6 @@ const computedClass = computed(() => {
         }
     ]
 })
-
-const computedAttrs = computed(() => {
-    return {
-        'aria-disabled': props.disabled,
-        disabled: props.disabled
-    }
-})
 </script>
 
 <template>

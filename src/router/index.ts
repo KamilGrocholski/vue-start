@@ -4,6 +4,7 @@ import StoreView from '../aipl/commander-app/StoreView.vue'
 import ComponentsView from '../aipl/components-app/ComponentsView.vue'
 import TodosView from '../aipl/todo-app/TodosView.vue'
 import HomeView from '../HomeView.vue'
+import JokesView from '@/aipl/jokes-app/JokesView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
             path: '/components',
             name: 'components',
             component: ComponentsView
+        },
+        {
+            path: '/jokes',
+            name: 'jokesk',
+            component: JokesView
         }
     ]
 })
